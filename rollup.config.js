@@ -27,6 +27,7 @@ const overrided = {
 await fs.rm('./dist', { recursive: true, force: true })
 await fs.mkdir('./dist')
 
+await fs.cp('./src/locales', './dist/locales', { recursive: true })
 await fs.cp('./node_modules/katex/dist/katex.min.js', './dist/katex.min.js')
 await fs.cp('./node_modules/katex/dist/katex.min.css', './dist/katex.min.css')
 

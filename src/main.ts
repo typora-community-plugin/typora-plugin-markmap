@@ -1,7 +1,7 @@
-import { CodeblockPostProcessor, path, Plugin, PluginSettings, html, WorkspaceLeaf } from '@typora-community-plugin/core'
+import { CodeblockPostProcessor, I18n, path, Plugin, PluginSettings, html, WorkspaceLeaf } from '@typora-community-plugin/core'
 import { Markmap } from 'markmap-view'
 import { renderMarkmap } from './markmap-renderer'
-import { i18n } from './i18n'
+import * as Locale from './locales/lang.en.json'
 import { MarkmapSettingTab } from './setting-tab'
 import { MarkmapView } from './markmap-view'
 
@@ -16,7 +16,9 @@ const DEFAULT_SETTINGS: MarkmapSettings = {
 
 export default class MarkmapPlugin extends Plugin<MarkmapSettings> {
 
-  i18n = i18n
+  i18n = new I18n<typeof Locale>({
+    localePath: path.join(this.manifest.dir!, 'locales')
+  })
 
   mmOfCid: Record<string, Markmap> = {}
 
